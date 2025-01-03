@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  mockoon:
+    image: mockoon/cli:latest
+    container_name: mockoon-server
+    ports:
+      - "3000:3000" # Map Mockoon's server port to the host
+    volumes:
+      - ./data:/data # Mount the directory containing your Mockoon JSON files
+    command: -d /data/router.json
+    restart: unless-stopped
